@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>茶桌輪值表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="sheetFrame"></iframe>
+
+  <script>
+    const baseUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSuAQLkcv9vAHV5PuQdp63CaxOXtLl-woRYRwUECdWQQSSrWGYVriL5eZK1gqBNGnwKkgmozNXFjVVx/pubhtml?gid=0&single=true";
+    const randomQuery = "&nocache=" + new Date().getTime();
+    document.getElementById("sheetFrame").src = baseUrl + randomQuery;
+  </script>
+</body>
+</html>
