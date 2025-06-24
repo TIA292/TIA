@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <title></title>
   <script>
-    window.onload = function() {
-      window.AppInventor.setWebViewString("NAV:25.0817883,121.2387758");
-      // 嘗試關閉 WebView 頁面（部分裝置有效）
-      window.close();
+    window.onload = function () {
+      window.location.href = "https://www.google.com/maps/dir/?api=1&destination=25.0817883,121.2387758";
+      setTimeout(function () {
+        window.close();
+      }, 1500); // 延遲關閉，避免尚未導向就被關掉
     };
   </script>
   <style>
