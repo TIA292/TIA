@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+    window.onload = function () {
+      window.location.href = "https://www.google.com/maps/dir/?api=1&destination=25.0766515,121.2315794";
+      setTimeout(function () {
+        window.close();
+      }, 1500); // 延遲關閉，避免尚未導向就被關掉
+    };
+  </script>
+  <style>
+    html, body {
+      display: none;
+    }
+  </style>
+</head>
+<body></body>
+</html>
