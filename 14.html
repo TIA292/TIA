@@ -2,20 +2,51 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>導航中</title>
   <script>
-    window.onload = function () {
+    function goNavigate() {
       window.location.href = "https://www.google.com/maps/dir/?api=1&destination=25.0804042,121.2372952";
+    }
+
+    window.onload = function () {
+      goNavigate(); // 一載入就跳轉
       setTimeout(function () {
-        window.close();
-      }, 1500); // 延遲關閉，避免尚未導向就被關掉
+        window.close(); // 10 秒後自動關閉頁面
+      }, 10000);
     };
   </script>
   <style>
     html, body {
-      display: none;
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+    }
+    h2 {
+      margin: 20px;
+      text-align: center;
+      color: #333333;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
     }
   </style>
 </head>
-<body></body>
+<body>
+  <h2>開啟導航中，如無跳轉請下方按鈕</h2>
+  <button onclick="goNavigate()">手動開啟導航</button>
+</body>
 </html>
