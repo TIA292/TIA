@@ -2,20 +2,32 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>正在跳轉</title>
   <script>
-    window.onload = function () {
+    function jump() {
       window.location.href = "https://play.google.com/store/apps/details?id=appinventor.ai_a92paul.TIA19";
-      setTimeout(function () {
-        window.close();
-      }, 1500); 
+    }
+
+    window.onload = function () {
+      jump();
     };
   </script>
   <style>
-    html, body {
-      display: none;
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      padding-top: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
     }
   </style>
 </head>
-<body></body>
+<body>
+  <h2>正在開啟跳轉…</h2>
+  <p>如果沒有自動跳轉，請點下方按鈕：</p>
+  <button onclick="jump()">點此手動跳轉</button>
+</body>
 </html>
