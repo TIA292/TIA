@@ -13,10 +13,16 @@ html,body{margin:0;padding:0;height:100%;overflow:auto}
 <iframe id="sheetFrame" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" sandbox="allow-scripts allow-same-origin" src="about:blank" title="車位表"></iframe>
 <script>
 (function(){
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
   const baseUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWizra4MjB5m8Hx2Yb2RLg91GLwJw31rez4TeC_tCylwnarT1lVi3BfvDuvDA-0YuT81sTMO7CpY1B/pubhtml?gid=1508065919&single=true&headers=false";
-  const randomQuery="&nocache="+Date.now();
-  const f=document.getElementById("sheetFrame");
-  setTimeout(()=>{f.src=baseUrl+randomQuery},100);
+  if(isiOS){
+    window.location.href=baseUrl;
+  }else{
+    const randomQuery="&nocache="+Date.now();
+    const f=document.getElementById("sheetFrame");
+    setTimeout(()=>{f.src=baseUrl+randomQuery},100);
+  }
 })();
 </script>
 </body>
