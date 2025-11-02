@@ -1,30 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>二期航班表</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>二期航班表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+html,body{margin:0;padding:0;height:100%;overflow:auto}
+#sheetFrame{width:100%;height:100%;border:none;min-width:100%;min-height:100%;display:block}
+</style>
 </head>
 <body>
-  <iframe id="sheetFrame"></iframe>
-
-  <script>
-    const baseUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNPf9Mt8YJaaV9ou8XCxm-rssSX-KGOz4ESqlowOQNC7N9fc9Uulvd3Wnr0tki4R-nZVvVlIPZVEVA/pubhtml?gid=678826219&single=true&headers=false";
-    const randomQuery = "&nocache=" + new Date().getTime();
-    document.getElementById("sheetFrame").src = baseUrl + randomQuery;
-  </script>
+<iframe id="sheetFrame" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" sandbox="allow-scripts allow-same-origin" src="about:blank" title="航班表"></iframe>
+<script>
+(function(){
+  const baseUrl= "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNPf9Mt8YJaaV9ou8XCxm-rssSX-KGOz4ESqlowOQNC7N9fc9Uulvd3Wnr0tki4R-nZVvVlIPZVEVA/pubhtml?gid=678826219&single=true&headers=false";
+  const randomQuery="&nocache="+Date.now();
+  const f=document.getElementById("sheetFrame");
+  setTimeout(()=>{f.src=baseUrl+randomQuery},100);
+})();
+</script>
 </body>
 </html>
