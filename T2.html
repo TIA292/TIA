@@ -13,10 +13,16 @@ html,body{margin:0;padding:0;height:100%;overflow:auto}
 <iframe id="sheetFrame" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" sandbox="allow-scripts allow-same-origin" src="about:blank" title="航班表"></iframe>
 <script>
 (function(){
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
   const baseUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vSNPf9Mt8YJaaV9ou8XCxm-rssSX-KGOz4ESqlowOQNC7N9fc9Uulvd3Wnr0tki4R-nZVvVlIPZVEVA/pubhtml?gid=678826219&single=true&headers=false";
-  const randomQuery="&nocache="+Date.now();
-  const f=document.getElementById("sheetFrame");
-  setTimeout(()=>{f.src=baseUrl+randomQuery},100);
+  if(isiOS){
+    window.location.href=baseUrl;
+  }else{
+    const randomQuery="&nocache="+Date.now();
+    const f=document.getElementById("sheetFrame");
+    setTimeout(()=>{f.src=baseUrl+randomQuery},100);
+  }
 })();
 </script>
 </body>
