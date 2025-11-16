@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<title>移防表</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-html,body{margin:0;padding:0;height:100%;overflow:auto}
-#sheetFrame{width:100%;height:100%;border:none;min-width:100%;min-height:100%;display:block}
-</style>
+  <meta charset="UTF-8">
+  <title>移防表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-<iframe id="sheetFrame" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" sandbox="allow-scripts allow-same-origin" src="about:blank" title="移防表"></iframe>
-<script>
-(function(){
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
-  const isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-  const baseUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vSsq1wHJ8BiRKzQXrQ3TTioYilgmXoOcn3hyZrFoZ3TyKtC-_15yUpPcgKbC-wPglhS7twH_DQcAmbq/pubhtml?gid=1441690389&single=true&headers=false";
-  if(isiOS){
-    window.location.href=baseUrl;
-  }else{
-    const randomQuery="&nocache="+Date.now();
-    const f=document.getElementById("sheetFrame");
-    setTimeout(()=>{f.src=baseUrl+randomQuery},100);
-  }
-})();
-</script>
+  <iframe id="sheetFrame"></iframe>
+
+  <script>
+    const baseUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSsq1wHJ8BiRKzQXrQ3TTioYilgmXoOcn3hyZrFoZ3TyKtC-_15yUpPcgKbC-wPglhS7twH_DQcAmbq/pubhtml?gid=1441690389&single=true&headers=false";
+    const randomQuery = "&nocache=" + Date.now();
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+    if (isiOS) {
+      window.location.href = baseUrl + randomQuery;
+    } else {
+      document.getElementById("sheetFrame").src = baseUrl + randomQuery;
+    }
+  </script>
 </body>
 </html>
