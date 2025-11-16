@@ -5,21 +5,31 @@
 <title>車位表</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-html,body{margin:0;padding:0;height:100%;overflow:auto}
-#sheetFrame{width:100%;height:100%;border:none;min-width:100%;min-height:100%;display:block}
+  html,body{margin:0;padding:0;height:100%;overflow:auto}
+  #sheetFrame{width:100%;height:100%;border:none;min-width:100%;min-height:100%;display:block}
 </style>
 </head>
 <body>
 <iframe id="sheetFrame"
-sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
-src="about:blank"
-title="車位表"></iframe>
+  sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+  src="about:blank"
+  title="車位表"></iframe>
 
 <script>
 (function(){
-  const baseUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vTWizra4MjB5m8Hx2Yb2RLg91GLwJw31rez4TeC_tCylwnarT1lVi3BfvDuvDA-0YuT81sTMO7CpY1B/pubhtml?gid=1508065919&single=true&headers=false";
-  const f=document.getElementById("sheetFrame");
-  f.src = baseUrl + "&nocache=" + Date.now();
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+  const baseUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTWizra4MjB5m8Hx2Yb2RLg91GLwJw31rez4TeC_tCylwnarT1lVi3BfvDuvDA-0YuT81sTMO7CpY1B/pubhtml?gid=1508065919&single=true&headers=false";
+
+  if (isiOS) {
+    window.location.href = baseUrl + "&nocache=" + Date.now();
+    return;
+  }
+
+  const f = document.getElementById("sheetFrame");
+  setTimeout(() => {
+    f.src = baseUrl + "&nocache=" + Date.now();
+  }, 50);
 })();
 </script>
 </body>
