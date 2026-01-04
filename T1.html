@@ -4,35 +4,30 @@
   <meta charset="UTF-8">
   <title>一期航班表</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
     }
   </style>
-</head>
-<body>
-  <iframe id="sheetFrame"></iframe>
 
   <script>
-    const baseUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNPf9Mt8YJaaV9ou8XCxm-rssSX-KGOz4ESqlowOQNC7N9fc9Uulvd3Wnr0tki4R-nZVvVlIPZVEVA/pubhtml?gid=2017216817&single=true&headers=false";
-    const randomQuery = "&nocache=" + Date.now();
+    const baseUrl =
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNPf9Mt8YJaaV9ou8XCxm-rssSX-KGOz4ESqlowOQNC7N9fc9Uulvd3Wnr0tki4R-nZVvVlIPZVEVA/pubhtml" +
+      "?gid=2017216817" +
+      "&single=true" +
+      "&widget=true" +
+      "&chrome=false";
 
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    const finalUrl = baseUrl + "&nocache=" + Date.now();
 
-    if (isiOS) {
-      window.location.href = baseUrl + randomQuery;
-    } else {
-      document.getElementById("sheetFrame").src = baseUrl + randomQuery;
-    }
+    window.location.replace(finalUrl);
   </script>
+</head>
+<body>
 </body>
 </html>
