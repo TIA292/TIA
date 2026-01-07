@@ -32,7 +32,9 @@
     if (useEmbed) {
       document.getElementById("sheetFrame").src = baseUrl + randomQuery;
     } else {
-      window.location.href = baseUrl + randomQuery;
+      setTimeout(() => {
+        window.location.replace(baseUrl + randomQuery);
+      }, 50);
     }
   </script>
 </body>
