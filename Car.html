@@ -22,16 +22,17 @@
   <iframe id="sheetFrame"></iframe>
 
   <script>
-    const baseUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTWizra4MjB5m8Hx2Yb2RLg91GLwJw31rez4TeC_tCylwnarT1lVi3BfvDuvDA-0YuT81sTMO7CpY1B/pubhtml?gid=1508065919&single=true&headers=false";
+    const baseUrl =
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vTWizra4MjB5m8Hx2Yb2RLg91GLwJw31rez4TeC_tCylwnarT1lVi3BfvDuvDA-0YuT81sTMO7CpY1B/pubhtml?gid=1508065919&single=true&headers=false";
     const randomQuery = "&nocache=" + Date.now();
 
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const isiOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    const params = new URLSearchParams(window.location.search);
+    const useEmbed = params.get("embed") === "1";
 
-    if (isiOS) {
-      window.location.href = baseUrl + randomQuery;
-    } else {
+    if (useEmbed) {
       document.getElementById("sheetFrame").src = baseUrl + randomQuery;
+    } else {
+      window.location.href = baseUrl + randomQuery;
     }
   </script>
 </body>
