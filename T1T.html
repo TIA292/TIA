@@ -4,31 +4,39 @@
   <meta charset="UTF-8">
   <title>一期航班表</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
+</head>
+<body>
+  <iframe id="sheetFrame"></iframe>
 
   <script>
     const baseUrl =
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNPf9Mt8YJaaV9ou8XCxm-rssSX-KGOz4ESqlowOQNC7N9fc9Uulvd3Wnr0tki4R-nZVvVlIPZVEVA/pubhtml" +
-      "?gid=2017216817" +
-      "&single=true" +
-      "&widget=true" +
-      "&chrome=false";
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNPf9Mt8YJaaV9ou8XCxm-rssSX-KGOz4ESqlowOQNC7N9fc9Uulvd3Wnr0tki4R-nZVvVlIPZVEVA/pubhtml?gid=2017216817&single=true&headers=false";
+    const randomQuery = "&nocache=" + Date.now();
 
-    const finalUrl = baseUrl + "&nocache=" + Date.now();
+    // 只判斷是否有 embed=1
+    const params = new URLSearchParams(window.location.search);
+    const useEmbed = params.get("embed") === "1";
 
-    // 直接用嵌入模式整頁載入
-    window.location.replace(finalUrl);
+    if (useEmbed) {
+      // 有指定參數 → 原本 iframe 包住
+      document.getElementById("sheetFrame").src = baseUrl + randomQuery;
+    } else {
+      // 沒參數或參數不符 → 一律整頁跳轉
+      window.location.href = baseUrl + randomQuery;
+    }
   </script>
-</head>
-<body>
 </body>
 </html>
